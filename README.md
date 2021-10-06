@@ -1,3 +1,4 @@
+![](share/pixmaps/bitcoin128.png)
 QAnoncoin Core integration/staging tree
 =====================================
 
