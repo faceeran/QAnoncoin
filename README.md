@@ -4,10 +4,16 @@ QAnoncoin Core integration/staging tree
 [![Build Status](https://travis-ci.org/qanoncoin-project/qanoncoin.svg?branch=master)](https://travis-ci.org/qanoncoin-project/qanoncoin)
 
 Website -   https://qanon-coin.org/
+
 Twitter -   https://twitter.com/Q_Anoncoin
+
 Telegram -  https://t.me/joinchat/ec1rvh35Vjo0MTNk
+
 Discord -   https://discord.gg/2685QxGZrR
+
 Explorer -  https://explorer.qanon-coin.org/
+
+
 What is QAnoncoin?
 ----------------
 
