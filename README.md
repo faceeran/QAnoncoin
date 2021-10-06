@@ -3,8 +3,11 @@ QAnoncoin Core integration/staging tree
 
 [![Build Status](https://travis-ci.org/qanoncoin-project/qanoncoin.svg?branch=master)](https://travis-ci.org/qanoncoin-project/qanoncoin)
 
-https://qanoncoin.org
-
+Website -   https://qanon-coin.org/
+Twitter -   https://twitter.com/Q_Anoncoin
+Telegram -  https://t.me/joinchat/ec1rvh35Vjo0MTNk
+Discord -   https://discord.gg/2685QxGZrR
+Explorer -  https://explorer.qanon-coin.org/
 What is QAnoncoin?
 ----------------
 
@@ -15,7 +18,7 @@ out collectively by the network. QAnoncoin Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the QAnoncoin Core software, see [https://qanoncoin.org](https://qanoncoin.org).
+the QAnoncoin Core software, see [https://qanon-coin.org](https://qanon-coin.org).
 
 License
 -------
