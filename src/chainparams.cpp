@@ -71,10 +71,10 @@ public:
     CMainParams() {
         strNetworkID = "main";
         consensus.nSubsidyHalvingInterval = 1051200;
-        //consensus.BIP34Height = 710000;
-        //consensus.BIP34Hash = uint256S("fa09d204a83a768ed5a7c8d441fa62f2043abf420cff1226c7b4329aeb9d51cf");
-        //consensus.BIP65Height = 918684; // bab3041e8977e0dc3eeff63fe707b92bde1dd449d8efafb248c27c8264cc311a
-        //consensus.BIP66Height = 811879; // 7aceee012833fa8952f8835d8b1b3ae233cd6ab08fdb27a771d2bd7bdc491894
+        consensus.BIP34Height = 710000;
+        consensus.BIP34Hash = uint256();
+        consensus.BIP65Height = 918684;
+        consensus.BIP66Height = 811879;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); 
         consensus.nPowTargetTimespan = 3.5 * 24 * 60 * 60; // 3.5 days
         consensus.nPowTargetSpacing = 1 * 60;
@@ -82,25 +82,25 @@ public:
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 6048; // 75% of 8064
         consensus.nMinerConfirmationWindow = 8064; // nPowTargetTimespan / nPowTargetSpacing * 4
-        //consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
-        //consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
-        //consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
 
         // Deployment of BIP68, BIP112, and BIP113.
-        //consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        //consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1485561600; // January 28, 2017
-        //consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1517356801; // January 31st, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1485561600; // January 28, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1517356801; // January 31st, 2018
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
-        //consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-        //consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1485561600; // January 28, 2017
-        //consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1517356801; // January 31st, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1485561600; // January 28, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1517356801; // January 31st, 2018
 
         // The best chain should have at least this much work.
-        //consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000006805c7318ce2736c0");
+        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000364afaace99b2");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        //consensus.defaultAssumeValid = uint256S("0x1673fa904a93848eca83d5ca82c7af974511a7e640e22edc2976420744f2e56a"); //1155631
+        consensus.defaultAssumeValid = uint256S("0xa0082f66974640a7840cc8d12f9b77da8924450be1dc3882d0378e60e5581213");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -122,9 +122,8 @@ public:
         // Note that of those with the service bits flag, most only support a subset of possible options
         vSeeds.push_back(CDNSSeedData("188.166.74.181", "188.166.74.181", true));
         vSeeds.push_back(CDNSSeedData("207.154.248.24", "207.154.248.24", true));
-        //vSeeds.push_back(CDNSSeedData("qanoncointools.com", "dnsseed.qanoncointools.com"));
-        //vSeeds.push_back(CDNSSeedData("qanoncoinpool.org", "dnsseed.qanoncoinpool.org"));
-        //vSeeds.push_back(CDNSSeedData("koin-project.com", "dnsseed.koin-project.com"));
+        vSeeds.push_back(CDNSSeedData("67.219.137.213", "67.219.137.213", true));
+        vSeeds.push_back(CDNSSeedData("140.82.1.236", "140.82.1.236", true));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,58);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -143,29 +142,29 @@ public:
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             (  0, uint256S("0xc854bcededf7c1ab85f281604b00a00b8a3783b1d9c2d7618abdd7fae19e0e0a"))
-            //(  4032, uint256S("0x9ce90e427198fc0ef05e5905ce3503725b80e26afd35a987965fd7e3d9cf0846"))
-            //(  8064, uint256S("0xeb984353fc5190f210651f150c40b8a4bab9eeeff0b729fcb3987da694430d70"))
-            //( 16128, uint256S("0x602edf1859b7f9a6af809f1d9b0e6cb66fdc1d4d9dcd7a4bec03e12a1ccd153d"))
-            //( 23420, uint256S("0xd80fdf9ca81afd0bd2b2a90ac3a9fe547da58f2530ec874e978fce0b5101b507"))
-            //( 50000, uint256S("0x69dc37eb029b68f075a5012dcc0419c127672adb4f3a32882b2b3e71d07a20a6"))
-            //( 80000, uint256S("0x4fcb7c02f676a300503f49c764a89955a8f920b46a8cbecb4867182ecdb2e90a"))
-            //(120000, uint256S("0xbd9d26924f05f6daa7f0155f32828ec89e8e29cee9e7121b026a7a3552ac6131"))
-            //(161500, uint256S("0xdbe89880474f4bb4f75c227c77ba1cdc024991123b28b8418dbbf7798471ff43"))
-            //(179620, uint256S("0x2ad9c65c990ac00426d18e446e0fd7be2ffa69e9a7dcb28358a50b2b78b9f709"))
-            //(240000, uint256S("0x7140d1c4b4c2157ca217ee7636f24c9c73db39c4590c4e6eab2e3ea1555088aa"))
-            //(383640, uint256S("0x2b6809f094a9215bafc65eb3f110a35127a34be94b7d0590a096c3f126c6f364"))
-            //(409004, uint256S("0x487518d663d9f1fa08611d9395ad74d982b667fbdc0e77e9cf39b4f1355908a3"))
-            //(456000, uint256S("0xbf34f71cc6366cd487930d06be22f897e34ca6a40501ac7d401be32456372004"))
-            //(638902, uint256S("0x15238656e8ec63d28de29a8c75fcf3a5819afc953dcd9cc45cecc53baec74f38"))
-            //(721000, uint256S("0x198a7b4de1df9478e2463bd99d75b714eab235a2e63e741641dc8a759a9840e5"))
+            (  1, uint256S("0x88588d0f570b46a83e3b07044edd54e57c584b0fe2b27dd12173467a048f67f0"))
+            (  10, uint256S("0x27b979541abddb9f5e56421a13704106366ffc48ed799cf6b321a3c2e31d6ed3"))
+            (  100, uint256S("0x7e5a4bb3ccc75d3ae035507439598e173c30309e0d943af68a4e309211f85505"))
+            (  500, uint256S("0xe345435f922eddade1a9652c5033c2a50cacdc208325daeabac471d109d2df5b"))
+            (  1000, uint256S("0x2310c6e794783a77ae9f46f30b6f9890739cd15ec198d87e5822294b6dfcc244"))
+            (  10000, uint256S("0x21226d79105892b83b88a68d4b5ced69218d9d32be2e478b833289849b3709c5"))
+            (  20000, uint256S("0x3cf3c518c968f1892b67d6489e1f25e64fef4185cf8709fcf04a3bfa131ea0a1"))
+            (  30000, uint256S("0x0fb9c595c5233193d5ece5e7852af19f20b1853bad76d870c6711fe3c75f25f9"))
+            (  40000, uint256S("0x86b471239b6ab54b07e4cf69f409176790b1748d25fdc9eb757f74de21df3786"))
+            (  50000, uint256S("0xb1144dcccd0b29f06bd9b748e157e004ceee8e085b45612baac4cb598525c1ab"))
+            (  60000, uint256S("0x930eac5ad510b70a548954c71232ec2b528f3fd42cae5a4f2dc759b9f3a1a0d6"))
+            (  70000, uint256S("0x49de85933c1bcc6020492e24f74e737d651e23a6f70ec43ffc805aaaf7409d11"))
+            (  80000, uint256S("0x704d74ac0c487f7ae092c7a66ef416c7a4f0df27e2c62c6d51b4819519aab182"))
+            (  86658, uint256S("0x274f465664309ba1fd24e0dabfdc07ca2790e17b00e2dd25708580e4f241fdf1"))
+            (  86662, uint256S("0xa0082f66974640a7840cc8d12f9b77da8924450be1dc3882d0378e60e5581213"))
         };
 
         chainTxData = ChainTxData{
-            // Data as of block b44bc5ae41d1be67227ba9ad875d7268aa86c965b1d64b47c35be6e8d5c352f4 (height 1155626).
-            1629909517, // * UNIX timestamp of last known number of transactions
-            0,  // * total number of transactions between genesis and that timestamp
+            // Data as of block.
+            1635294771, // * UNIX timestamp of last known number of transactions
+            87086,  // * total number of transactions between genesis and that timestamp
                     //   (the tx=... number in the SetBestChain debug.log lines)
-            0.06     // * estimated number of transactions per second after that timestamp
+            0.999782 // * estimated number of transactions per second after that timestamp
         };
     }
 };
